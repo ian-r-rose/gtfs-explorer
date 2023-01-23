@@ -1,0 +1,25 @@
+{
+  "name": "gtfs-explorer",
+  "version": "1.0.0",
+  "description": "Web viewer for GTFS files",
+  "main": "index.js",
+  "author": "Ian Rose",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "esbuild": "^0.17.4",
+    "eslint": "^8.32.0",
+    "prettier": "^2.8.3",
+    "typescript": "^4.9.4"
+  }
+}
