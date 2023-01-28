@@ -6,11 +6,11 @@ import App from "./app";
 import * as duckdb from "@duckdb/duckdb-wasm";
 import * as arrow from "apache-arrow";
 
-import uint8array from "./gtfsexport.zip";
+import gtfsZip from "./gtfsexport.zip";
 import JSZip from "jszip";
 
 (async () => {
-  const content = await JSZip.loadAsync(uint8array);
+  const content = await JSZip.loadAsync(gtfsZip);
   for (const [name, data] of Object.entries(content.files)) {
     console.log(name, data);
   }
@@ -46,7 +46,7 @@ import JSZip from "jszip";
   }
 })();
 
-console.log(uint8array);
+console.log(gtfsZip);
 
 const container = document.getElementById("root");
 const root = createRoot(container!);

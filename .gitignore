@@ -3,3 +3,5 @@ public/*.wasm
 
 node_modules/*
 
+yarn-error.log
+
