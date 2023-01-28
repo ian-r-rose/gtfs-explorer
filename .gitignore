@@ -1,3 +1,5 @@
-public/index.js
+public/*.js
+public/*.wasm
 
 node_modules/*
+
