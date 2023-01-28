@@ -37,6 +37,7 @@ await esbuild.build({
   platform: "browser",
   format: "iife",
   target: "esnext",
+  loader: { ".zip": "binary" },
   bundle: true,
   minify: false,
   sourcemap: false,

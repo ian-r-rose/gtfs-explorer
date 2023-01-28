@@ -6,7 +6,15 @@ import App from "./app";
 import * as duckdb from "@duckdb/duckdb-wasm";
 import * as arrow from "apache-arrow";
 
+import uint8array from "./gtfsexport.zip";
+import JSZip from "jszip";
+
 (async () => {
+  const content = await JSZip.loadAsync(uint8array);
+  for (const [name, data] of Object.entries(content.files)) {
+    console.log(name, data);
+  }
+
   try {
     const DUCKDB_CONFIG = await duckdb.selectBundle({
       mvp: {
@@ -37,6 +45,8 @@ import * as arrow from "apache-arrow";
     console.error(e);
   }
 })();
+
+console.log(uint8array);
 
 const container = document.getElementById("root");
 const root = createRoot(container!);
