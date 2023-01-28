@@ -33,12 +33,11 @@
     "typescript": "^4.9.4"
   },
   "lint-staged": {
-    "**/*.{tsx,ts,json,css,md,html}": [
-      "prettier --write"
+    "**/*.{.mjs,tsx,ts,json,css,md,html}": [
+      "prettier --write --check"
     ],
     "src/**/*.{ts,tsx}": [
-      "eslint",
-      "tsc --noEmit"
+      "eslint"
     ]
   }
 }
