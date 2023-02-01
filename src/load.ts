@@ -113,6 +113,7 @@ export async function loadGTFS(db: AsyncDuckDB) {
     JSZip.loadAsync(gtfsZip),
     db.connect(),
   ]);
+  console.log("Unzipped");
 
   for (const [name, data] of Object.entries(content.files)) {
     const text = await data.async("text");
@@ -124,9 +125,11 @@ export async function loadGTFS(db: AsyncDuckDB) {
       const subset: { [col: string]: arrow.DataType } = {};
       for (const c of columns) {
         if (!(c in schema)) {
-          throw Error(`Unexpected column ${c} in ${tname}`);
+          console.warn(`Unexpected column ${c} in ${tname}`);
+          subset[c] = new arrow.Utf8();
+        } else {
+          subset[c] = schema[c];
         }
-        subset[c] = schema[c];
       }
 
       await conn.insertCSVFromPath(name, {
@@ -146,6 +149,7 @@ export async function loadGTFS(db: AsyncDuckDB) {
         dateFormat: "%Y%m%d",
       });
     }
+    console.log(`Loaded ${tname}`);
   }
   conn.close(); // Fire and forget connection closing
 }
